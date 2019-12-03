@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Pokemon;
+use App\Comentario;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 
@@ -16,8 +17,8 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-
-        return view('post.index')->with(['posts'=>Post::paginate(5)]);
+        $id=\Auth::user()->id;
+        return view('post.index')->with(['posts'=>Post::paginate(5),'user'=>$id]);
     }
 
     /**
@@ -28,8 +29,11 @@ class PostController extends Controller
     public function create()
     {
         $id=\Auth::user()->id;
+
+        
         return view('post/create')->with(['pokemons'=>Pokemon::all(),
-                                            'iduser'=>$id]);
+                                            'iduser'=>$id
+                                            ]);
     }
 
     /**
@@ -62,7 +66,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show')->with(['post'=>$post]);
+        $id=\Auth::user()->id;
+        $comentarios=Comentario::where('idpost',$post->id)->cursor();
+        return view('post.show')->with(['post'=>$post,'comentarios'=>$comentarios,'user'=>$id]);
     }
 
     /**

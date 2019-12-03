@@ -20,9 +20,9 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 
                 @auth
-                <a class="btn" href ="{{url('post/')}}">Posts</a>
-                <a class="btn" href ="{{url('post/create')}}">Crear Post</a>
-                <a class="btn" href ="{{url('pokemon/')}}">Pokemons</a>
+                <a class="btn btn-outline-success" href ="{{url('post/')}}">Posts</a>
+                <a class="btn btn-outline-success" href ="{{url('post/create')}}">Crear Post</a>
+                <a class="btn btn-outline-success" href ="{{url('pokemon/')}}">Pokemons</a>
                     <form class="form-inline my-2 my-lg-0" action="{{url('logout')}}" method="post">
                                 <input type="hidden" name="_token" value="9DeifAlvYDnJLZbJtHPyfSXr7xD6htZXoU5gpV4Q">   
                                 @csrf

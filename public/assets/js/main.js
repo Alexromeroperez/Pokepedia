@@ -10,4 +10,6 @@
             }
        });
     }
+
+    console.log($('#json').value);
 })();

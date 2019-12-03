@@ -5,7 +5,7 @@
   @csrf
   <input type="hidden" name="iduser" value="{{$iduser}}"/>
   <h3>Pokemon del post:</h3>
-  
+  <input type="hidden" id="json" value="{{$json}}"/>
   <select name="idpokemon">
     @foreach ($pokemons as $pokemon)
     <option value="{{$pokemon->id}}">{{$pokemon->nombre}}</option>
